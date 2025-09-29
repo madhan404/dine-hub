@@ -55,7 +55,7 @@ utils/ # Utility functions
 ## 🚀 Getting Started  
 
 ### 1. Clone the Repository  
-git clone https://github.com/dinhub/RestIn.git
+git clone https://github.com/madhan404/dine-hub.git
 cd RestIn
 
 ### 2. Setup Backend  
@@ -129,9 +129,9 @@ Contributions are welcome! 🎉
 For major changes, please open an **issue** first to discuss your ideas.  
 
 ---
-
+‼️
 ## 📄 License  
-
+💀
 This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.  
 
 ---
