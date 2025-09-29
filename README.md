@@ -140,4 +140,4 @@ This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) f
 
 Made with ❤️ by **DinHub Team**  
 
-🌐 Website: [RestIn](https://restin-app.netlify.app)
+🌐 Website: [RestIn](https://restin-hub.netlify.app)
