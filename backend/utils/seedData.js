@@ -1,5 +1,5 @@
 const User = require('../models/User');
-const Restaurant = require('../models/Restaurant');
+const Restaurant = require('../models/restaurant');
 const Room = require('../models/Room');
 
 const seedData = async () => {
