@@ -56,7 +56,7 @@ const UserManagement = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get(`${apiUrl}/users`);
+      const response = await axios.get(`${apiUrl}/api/users`);
       setUsers(response.data);
     } catch (err) {
       setError('Failed to load users');
@@ -89,10 +89,10 @@ const UserManagement = () => {
         const updateData = { ...formData };
         if (!updateData.password) delete updateData.password; // Don't update password if empty
         
-        await axios.put(`${apiUrl}/users/${editingUser._id}`, updateData);
+        await axios.put(`${apiUrl}/api/users/${editingUser._id}`, updateData);
       } else {
         // Create new user
-        await axios.post(`${apiUrl}/auth/register`, formData);
+        await axios.post(`${apiUrl}/api/auth/register`, formData);
       }
       
       setDialogOpen(false);
@@ -105,7 +105,7 @@ const UserManagement = () => {
   const handleDeleteUser = async (userId) => {
     if (window.confirm('Are you sure you want to delete this user?')) {
       try {
-        await axios.delete(`${apiUrl}users/${userId}`);
+        await axios.delete(`${apiUrl}/apiusers/${userId}`);
         fetchUsers();
       } catch (err) {
         setError('Failed to delete user');

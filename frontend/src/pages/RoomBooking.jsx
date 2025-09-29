@@ -52,8 +52,8 @@ const RoomBooking = () => {
   const fetchRestaurantAndRooms = async () => {
     try {
       const [restaurantRes, roomsRes] = await Promise.all([
-        axios.get(`${apiUrl}/restaurants/${restaurantId}`),
-        axios.get(`${apiUrl}/rooms?restaurant=${restaurantId}`)
+        axios.get(`${apiUrl}/api/restaurants/${restaurantId}`),
+        axios.get(`${apiUrl}/api/rooms?restaurant=${restaurantId}`)
       ]);
       
       setRestaurant(restaurantRes.data);
@@ -72,7 +72,7 @@ const RoomBooking = () => {
 
   const handleBookingSubmit = async () => {
     try {
-      await axios.post(`${apiUrl}/bookings`, {
+      await axios.post(`${apiUrl}/api/bookings`, {
         restaurant: restaurantId,
         room: selectedRoom._id,
         ...bookingData

@@ -83,8 +83,8 @@ const StaffDashboard = () => {
   const fetchStaffData = async () => {
     try {
       const [roomsRes, bookingsRes] = await Promise.all([
-        axios.get(`${apiUrl}/rooms`),
-        axios.get(`${apiUrl}/bookings`)
+        axios.get(`${apiUrl}/api/rooms`),
+        axios.get(`${apiUrl}/api/bookings`)
       ]);
       
       setRooms(roomsRes.data);
@@ -92,7 +92,7 @@ const StaffDashboard = () => {
       
       // Try to fetch reports, but don't fail if it doesn't work
       try {
-        const reportsRes = await axios.get(`${apiUrl}/reports`);
+        const reportsRes = await axios.get(`${apiUrl}/api/reports`);
         setReports(reportsRes.data);
       } catch (reportErr) {
         console.log('Reports not available:', reportErr.message);
@@ -107,7 +107,7 @@ const StaffDashboard = () => {
 
   const handleUpdateBookingStatus = async (bookingId, newStatus) => {
     try {
-      await axios.patch(`${apiUrl}/bookings/${bookingId}`, {
+      await axios.patch(`${apiUrl}/api/bookings/${bookingId}`, {
         status: newStatus
       });
       setSuccess(`Booking ${newStatus} successfully`);
@@ -119,7 +119,7 @@ const StaffDashboard = () => {
 
   const handleCreateReport = async () => {
     try {
-      await axios.post(`${apiUrl}/reports`, {
+      await axios.post(`${apiUrl}/api/reports`, {
         ...reportForm
       });
       
@@ -144,7 +144,7 @@ const StaffDashboard = () => {
 
   const handleMarkClean = async (roomId) => {
     try {
-      await axios.patch(`${apiUrl}/rooms/${roomId}/clean`);
+      await axios.patch(`${apiUrl}/api/rooms/${roomId}/clean`);
       setSuccess('Room marked as clean');
       fetchStaffData();
     } catch (err) {
@@ -154,7 +154,7 @@ const StaffDashboard = () => {
 
   const handleMarkMaintenance = async (roomId) => {
     try {
-      await axios.patch(`${apiUrl}/rooms/${roomId}/maintenance`, {
+      await axios.patch(`${apiUrl}/api/rooms/${roomId}/maintenance`, {
         reason: 'Maintenance required'
       });
       setSuccess('Room marked for maintenance');

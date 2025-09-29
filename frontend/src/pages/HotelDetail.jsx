@@ -51,7 +51,7 @@ const HotelDetail = () => {
 
   const fetchHotelDetails = async () => {
     try {
-      const response = await axios.get(`${apiUrl}/restaurants/${id}`);
+      const response = await axios.get(`${apiUrl}/api/restaurants/${id}`);
       setHotel(response.data);
     } catch (err) {
       setError('Failed to load hotel details');
@@ -60,7 +60,7 @@ const HotelDetail = () => {
 
   const fetchRooms = async () => {
     try {
-      const response = await axios.get(`${apiUrl}/rooms?restaurant=${id}`);
+      const response = await axios.get(`${apiUrl}/api/rooms?restaurant=${id}`);
       setRooms(response.data || []);
     } catch (err) {
       setError('Failed to load rooms');
@@ -84,7 +84,7 @@ const HotelDetail = () => {
 
   const handleBookingSubmit = async () => {
     try {
-      await axios.post(`${apiUrl}/bookings`, {
+      await axios.post(`${apiUrl}/api/bookings`, {
         restaurant: id,
         room: selectedRoom._id,
         customer: user.id,

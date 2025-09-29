@@ -73,9 +73,9 @@ const AdminAnalytics = () => {
   const fetchAnalytics = async () => {
     try {
       const [bookingsRes, usersRes, roomsRes] = await Promise.all([
-        axios.get(`${apiUrl}/bookings`),
-        axios.get(`${apiUrl}/users`),
-        axios.get(`${apiUrl}/rooms`)
+        axios.get(`${apiUrl}/api/bookings`),
+        axios.get(`${apiUrl}/api/users`),
+        axios.get(`${apiUrl}/api/rooms`)
       ]);
 
       const bookings = bookingsRes.data;
@@ -99,7 +99,7 @@ const AdminAnalytics = () => {
       
       // Try to fetch reports, but don't fail if it doesn't work
       try {
-        const reportsRes = await axios.get(`${apiUrl}/reports`);
+        const reportsRes = await axios.get(`${apiUrl}/api/reports`);
         setReports(reportsRes.data);
       } catch (reportErr) {
         console.log('Reports not available:', reportErr.message);
@@ -114,7 +114,7 @@ const AdminAnalytics = () => {
 
   const handleUpdateReportStatus = async (reportId, newStatus) => {
     try {
-      await axios.patch(`${apiUrl}/reports/${reportId}`, {
+      await axios.patch(`${apiUrl}/api/reports/${reportId}`, {
         status: newStatus
       });
       fetchAnalytics();

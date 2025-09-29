@@ -83,7 +83,7 @@ const Restaurants = () => {
 
   const fetchRestaurants = async () => {
     try {
-      const response = await axios.get(`${apiUrl}/restaurants`);
+      const response = await axios.get(`${apiUrl}/api/restaurants`);
       // Always prefer backend data if available
       if (response.data && response.data.length > 0) {
         setRestaurants(response.data);

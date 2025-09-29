@@ -77,8 +77,8 @@ const RoomManagement = () => {
   const fetchRoomsAndRestaurants = async () => {
     try {
       const [roomsRes, restaurantsRes] = await Promise.all([
-        axios.get(`${apiUrl}/rooms`),
-        axios.get(`${apiUrl}/restaurants`)
+        axios.get(`${apiUrl}/api/rooms`),
+        axios.get(`${apiUrl}/api/restaurants`)
       ]);
       setRooms(roomsRes.data);
       setRestaurants(restaurantsRes.data);
@@ -127,9 +127,9 @@ const RoomManagement = () => {
       };
 
       if (editingRoom) {
-        await axios.put(`${apiUrl}/rooms/${editingRoom._id}`, submitData);
+        await axios.put(`${apiUrl}/api/rooms/${editingRoom._id}`, submitData);
       } else {
-        await axios.post(`${apiUrl}/rooms`, submitData);
+        await axios.post(`${apiUrl}/api/rooms`, submitData);
       }
       
       setDialogOpen(false);
@@ -143,7 +143,7 @@ const RoomManagement = () => {
   const handleDeleteRoom = async (roomId) => {
     if (window.confirm('Are you sure you want to delete this room?')) {
       try {
-        await axios.delete(`${apiUrl}/rooms/${roomId}`);
+        await axios.delete(`${apiUrl}/api/rooms/${roomId}`);
         fetchRoomsAndRestaurants();
       } catch (err) {
         setError('Failed to delete room');
@@ -153,7 +153,7 @@ const RoomManagement = () => {
 
   const toggleRoomAvailability = async (roomId, currentStatus) => {
     try {
-      await axios.patch(`${apiUrl}/rooms/${roomId}`, {
+      await axios.patch(`${apiUrl}/api/rooms/${roomId}`, {
         isAvailable: !currentStatus
       });
       fetchRoomsAndRestaurants();
